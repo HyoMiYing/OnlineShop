@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+  <head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <title>History</title>
+  </head>
+
+  <header>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" id="page_payments_id" href="/">Payments</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="page_new_id" href="/new/">New</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" id="page_history_id" href="/history/">History</a>
+      </li>
+    </ul>
+  </header>
+  <body>
+    {% if data %}
+    <table class="table">
+      <tr>
+        <th>Transaction number</th>
+        <th>Card owner name</th>
+        <th>Withdraw amount</th>
+      </tr>
+      {% for d in data %}
+      <tr>
+        <td>{{ d.id }}</td>
+        <td>{{ d.card.cardholders_name }}</td>
+        <td>{{ d.withdraw_amount }}€</td>
+      </tr>
+      {% endfor %}
+      {% else %}
+        <p>There were no transactions in the store.</p>
+      {% endif %}
+    </table>
+  </body>
+</html>

@@ -70,14 +70,25 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'Trgovina.wsgi.application'
+
+
+# Added by Rok
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'trgovinadb',
+    }
+}
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.8/topics/i18n/
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Europe/Berlin'
 
 USE_I18N = True
 
