@@ -9,7 +9,7 @@ class Transaction(models.Model):
 
 class Card(models.Model):
     cardholders_name = models.CharField(max_length=30)
-    card_number = models.BigIntegerField(validators=[MaxValueValidator(9999999999999999), MinValueValidator(0)])
+    card_number = models.BigIntegerField(unique=True, validators=[MaxValueValidator(9999999999999999), MinValueValidator(0)])
     card_balance = models.FloatField()
 
     def __str__(self):

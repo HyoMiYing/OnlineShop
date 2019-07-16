@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+  <!-- <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script> -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>  
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <title>All cards</title>
+    <script>
+        function submit_delete(id) {
+            $.ajax({
+                type: $('#delete_form_'+id).attr('method'),
+                url: $('#delete_form_'+id).attr('action'),
+                data: $('#delete_form_'+id).serialize(),
+                success: function (data) {
+                    $('#card'+id).remove()
+                }
+            });
+            $("#all_cards_table").load("all_cards.html #all_cards_table")
+        }
+      </script>
+  </head>
+  
+  <header>
+    <ul class="nav nav-tabs">
+      <li class="nav-item">
+        <a class="nav-link" id="page_payments_id" href="/">Payments</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="page_new_id" href="/new/">New</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="page_history_id" href="/history/">History</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link active" id="page_all_cards_id" href="/all_cards/">All cards</a>
+      </li>
+    </ul>
+  </header>
+  <body>
+    <div id="all_cards_table">
+    {% if cards %}
+    <table class="table" id="card-table">
+      <tr>
+        <th>Card owner name</th>
+        <th>Card balance</th>
+      </tr>
+      {% for card in cards %}
+      <tr id="card_{{card.id}}">
+        <td>{{ card.cardholders_name }}</td>
+        <td>{{ card.card_balance }}€</td>
+        <td>
+          <form action="{% url 'card_delete' card.id %}" method="post" id="delete_form_{{ card.id }}">
+            {% csrf_token %}
+            <input type="button" onclick="submit_delete({{ card.id }})" value="Delete">
+      </form>
+    </td>
+      </tr>
+      {% endfor %}
+    </table>
+      {% else %}
+      <p>There are no cards registered.</p>
+      {% endif %}
+    </div>
+  </body>
+
+</html>

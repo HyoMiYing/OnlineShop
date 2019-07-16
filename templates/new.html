@@ -1,7 +1,16 @@
 <!DOCTYPE html>
   <head>
     {% load widget_tweaks %}
+    {% load staticfiles %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script> 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script type="text/javascript">
+    $( document ).ready(function() { 
+    $("#pop_up").click(function(event) {
+        alert("New card added");
+        });
+    });
+    </script>
     <title>New</title>
   </head>
 
@@ -16,10 +25,13 @@
       <li class="nav-item">
         <a class="nav-link" id="page_history_id" href="/history/">History</a>
       </li>
+      <li class="nav-item">
+          <a class="nav-link" id="page_all_cards_id" href="/all_cards/">All cards</a>
+      </li>
     </ul>
   </header>
   <body>
-    <form action="/new/" method="POST" class="form-group">
+    <form action="/new/" method="POST" class="form-group" id="new_card_form">
       {% csrf_token %}
       <div class="form-control form-control-lg">
         <strong>Full name:</strong>
@@ -33,7 +45,15 @@
         <strong>Amount (in €):</strong>
         {% render_field form.card_balance type="input" %}
       </div>
-      <input type="submit" value="Submit" class="form-control btn btn-primary">
+      <!-- Input type submit bind jquery pop up message  -->
+      <input id="pop_up" type="submit" value="Submit" class="form-control btn btn-primary">
+      {% if form.card_number.errors %}
+      <div class="form-control">
+      {{ form.card_number.errors }}
+      </div>
+      {% endif %}
     </form>
+</button>
+
   </body>
 </html>

@@ -13,6 +13,11 @@ class CardInputForm(forms.ModelForm):
             'card_number': _('Card number:'),
             'card_balance': _('Amount of currency (in €):'),
         }
+        error_messages = {
+            'card_number': {
+                'unique': _("This card is already registered."),
+            },
+        }
 
 class TransactionForm(forms.ModelForm):
     class Meta:

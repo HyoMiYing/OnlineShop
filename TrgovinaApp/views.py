@@ -1,8 +1,13 @@
 # Django imports
 from django.shortcuts import render
-# 'reverse' import repaired by Rok
-from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect
+
+from django.shortcuts import get_object_or_404
+
+# Imports for code spike
+# from django.core.urlresolvers import reverse
+# from django.views.generic.edit import DeleteView
+# from django.core.urlresolvers import reverse_lazy
 
 from .forms import CardInputForm, TransactionForm
 from .models import Card, Transaction
@@ -52,3 +57,14 @@ def new(request):
 def history(request):
     data = Transaction.objects.all()
     return render(request, 'history.html', {'data':data})
+
+def all_cards(request):
+    cards = Card.objects.all()
+    return render(request, 'all_cards.html', {'cards':cards})
+
+def card_delete(request, id):
+    card_that_is_ready_to_be_deleted = get_object_or_404(Card, id=id)
+    if request.method == 'POST':
+        card_that_is_ready_to_be_deleted.delete()
+
+    return HttpResponseRedirect('/all_cards')

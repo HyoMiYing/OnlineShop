@@ -1,6 +1,8 @@
 from django.test import TestCase
+from django.http import HttpRequest
 
 from TrgovinaApp.models import Card, Transaction
+from TrgovinaApp.views import all_cards
 
 
 class WebsitePagesTest(TestCase):
@@ -13,9 +15,13 @@ class WebsitePagesTest(TestCase):
         response = self.client.get('/new/')
         self.assertTemplateUsed(response, 'new.html')
 
-    def test_new_page_uses_new_template(self):
+    def test_history_page_uses_history_template(self):
         response = self.client.get('/history/')
         self.assertTemplateUsed(response, 'history.html')
+
+    def test_all_cards_page_uses_all_cards_template(self):
+        response = self.client.get('/all_cards/')
+        self.assertTemplateUsed(response, 'all_cards.html')
 
 class PaymentCardModelTest(TestCase):
 
@@ -44,7 +50,7 @@ class PaymentCardModelTest(TestCase):
 
 class NewCardTest(TestCase):
 
-    def test_can_save_a_POST_request(self):
+    def test_can_add_a_new_card(self):
         self.client.post('/new/', data={'cardholders_name': 'giggity', 'card_number': '123213123123', 'card_balance': '3222.10'})
 
         self.assertEqual(Card.objects.count(), 1)

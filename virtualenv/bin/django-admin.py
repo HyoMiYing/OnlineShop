@@ -1,4 +1,4 @@
-#!/home/rok/Documents/IdConference/virtualenv/bin/python3.6
+#!/home/rok/Documents/IdConference/virtualenv/bin/python3
 from django.core import management
 
 if __name__ == "__main__":
