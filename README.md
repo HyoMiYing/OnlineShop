@@ -17,14 +17,15 @@ Functional tests (they are the reason that 'Selenium' is in requirements.txt) do
 -------
 -------
 
-16.7.
+17.7.
 Oddajam drugi del
 
 V zavihku "All Cards" sem dodal AJAX klic.
 
-V zavihku new sem dodal JQuery pop-up. Tukaj boste opazili, da spletna stran sporoči "New card added" tudi, če form ni pravilno izpolnjen.
-Vseeno sem sklenil poslati nalogo, saj na njej že delam 8 dni. Z JavaScriptom se prej še nisem ukvarjal in bom potreboval še nekaj dni, da se je bom priučil.
-Vmes sem obtičal, ampak sem se zaradi tega vključil v skupnost Stack Overflowa, kjer sem začel postavljati vprašanja in dobil uporabne odgovore.
+V zavihku new sem dodal JQuery pop-up.
 
-V mailu je Tomaž napisal, naj napišem vsaj en test za dodajanje kartic, vendar je bil test za dodajanje kartic že vključen v prvem commitu.
+Rečeno mi je bilo, naj napišem vsaj en test za dodajanje kartic, vendar je bil test za dodajanje kartic že vključen v prvem commitu.
 Najde se ga v tests.py, class NewCardTest.
+
+Komentar po prvem pull requestu je bil tudi, naj dodam kodiranje v forms.py. Na Stack Oveflowu je pisalo, da program prepozna,
+če vključimo sledečo vrstico na začetek datoteke: # -*- coding: utf-8 -*-. Je to v redu?
