@@ -47,12 +47,12 @@ def new(request):
             new_card_instance = Card(cardholders_name=cardholders_name, card_number=card_number, card_balance=card_balance)
             new_card_instance.save()
 
-            return HttpResponseRedirect('/')
+            return render(request, 'new.html', {'form':form, 'form_is_valid': True})
 
     else:
         form = CardInputForm()
 
-    return render(request, 'new.html', {'form':form})
+    return render(request, 'new.html', {'form':form, 'form_is_valid': False})
 
 def history(request):
     data = Transaction.objects.all()
