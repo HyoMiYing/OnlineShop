@@ -22,7 +22,7 @@
   </header>
   <body>
     {% if data %}
-    <table class="table">
+    <table class="table" id="transaction_history_table">
       <tr>
         <th>Transaction number</th>
         <th>Card owner name</th>
@@ -36,7 +36,7 @@
       </tr>
       {% endfor %}
       {% else %}
-        <p>There were no transactions in the store.</p>
+        <p class="blockquote text-center">There were no transactions in the store.</p>
       {% endif %}
     </table>
   </body>

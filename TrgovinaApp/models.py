@@ -8,7 +8,7 @@ class Transaction(models.Model):
     withdraw_amount = models.FloatField()
 
 class Card(models.Model):
-    cardholders_name = models.CharField(max_length=30)
+    cardholders_name = models.CharField(unique=True, max_length=30)
     card_number = models.BigIntegerField(unique=True, validators=[MaxValueValidator(9999999999999999), MinValueValidator(0)])
     card_balance = models.FloatField()
 

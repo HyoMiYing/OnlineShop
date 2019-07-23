@@ -44,20 +44,20 @@
         <th>Card balance</th>
       </tr>
       {% for card in cards %}
-      <tr id="card_{{card.id}}">
+      <tr id="card_{{card.id}}" class="{{card.cardholders_name}}">
         <td>{{ card.cardholders_name }}</td>
         <td>{{ card.card_balance }}€</td>
         <td>
           <form action="{% url 'card_delete' card.id %}" method="post" id="delete_form_{{ card.id }}">
             {% csrf_token %}
-            <input type="button" onclick="submit_delete({{ card.id }})" value="Delete">
-      </form>
-    </td>
+            <input id="delete-button" type="button" onclick="submit_delete({{ card.id }})" value="Delete">
+          </form>
+        </td>
       </tr>
       {% endfor %}
     </table>
       {% else %}
-      <p>There are no cards registered.</p>
+      <p class="blockquote text-center">There are no cards registered.</p>
       {% endif %}
     </div>
   </body>

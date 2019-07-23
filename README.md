@@ -17,15 +17,15 @@ Functional tests (they are the reason that 'Selenium' is in requirements.txt) do
 -------
 -------
 
-17.7.
+23.7.
 Oddajam drugi del
 
 V zavihku "All Cards" sem dodal AJAX klic.
 
 V zavihku new sem dodal JQuery pop-up.
 
-Rečeno mi je bilo, naj napišem vsaj en test za dodajanje kartic, vendar je bil test za dodajanje kartic že vključen v prvem commitu.
-Najde se ga v tests.py, class NewCardTest.
+Komentar po prvem pull requestu je bil tudi, naj dodam kodiranje v forms.py. Če prav razumem, je cilj to, da se prepreči vnos
+nenavadnih znakov v obrazec. Glede na to, da se s tem prej še nikoli nisem srečal sem prevzel rešitev iz StackOveflowa rešitev,
+da je v HTML <form> dodan accept-charset="UTF-8". Je ta rešitev pravilna, in ali sem sploh prav razumel težavo?
 
-Komentar po prvem pull requestu je bil tudi, naj dodam kodiranje v forms.py. Na Stack Oveflowu je pisalo, da program prepozna,
-če vključimo sledečo vrstico na začetek datoteke: # -*- coding: utf-8 -*-. Je to v redu?
+Do konca je spisan tudi functional_tests.py, ki deluje. Navodila za uporabo so napisana v datoteki.

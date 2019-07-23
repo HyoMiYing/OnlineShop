@@ -22,17 +22,27 @@
     </ul>
   </header>
   <body>
-      <form action="/" method="POST">
+      <form action="/" method="POST" accept-charset="UTF-8">
         {% csrf_token %}
         <div class="form-control form-control-lg">
           <strong>Your name:</strong>
-          {% render_field form.card type="input" class="form-group" %}
+          {% render_field form.card type="input" class="form-group" id="choose-card-input" %}
         </div>
         <div class="form-control form-control-lg">
           <strong>Withdraw amount (in €):</strong>
-          {% render_field form.withdraw_amount type="input" %}
+          {% render_field form.withdraw_amount type="input" id="withdraw-amount-input" %}
         </div>
-        <input type="submit" value="Submit" class="form-control btn btn-primary">
+        <input type="submit" value="Submit" class="form-control btn btn-primary" id="submit-button">
+        {% if form.card.errors %}
+        <div class="form-control" id="form-error-message">
+        {{ form.card.errors }}
+        </div>
+        {% endif %}
+        {% if form.withdraw_amount.errors %}
+        <div class="form-control" id="form-error-message">
+        {{ form.withdraw_amount.errors }}
+        </div>
+        {% endif %}
       </form>
   </body>
 </html>

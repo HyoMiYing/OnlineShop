@@ -9,8 +9,9 @@
       var show_pop_up = "{{ form_is_valid }}";
       if(show_pop_up === 'True') {
         alert("New card added");
-        } else {
-          alert("Invalid input");
+        } else 
+        {
+
         }
     });
     </script>
@@ -34,25 +35,37 @@
     </ul>
   </header>
   <body>
-    <form action="/new/" method="POST" class="form-group" id="new_card_form">
+    <form action="/new/" method="POST" class="form-group" id="new_card_form" accept-charset="UTF-8">
       {% csrf_token %}
       <div class="form-control form-control-lg">
         <strong>Full name:</strong>
-        {% render_field form.cardholders_name type="input" %}
+        {% render_field form.cardholders_name type="input" id="name-input" %}
       </div>
       <div class="form-control form-control-lg">
         <strong>Card number:</strong>
-        {% render_field form.card_number type="input" %}
+        {% render_field form.card_number type="input" id="card-number-input" %}
       </div>
       <div class="form-control form-control-lg">
         <strong>Amount (in €):</strong>
-        {% render_field form.card_balance type="input" %}
+        {% render_field form.card_balance type="input" id="amount-input" %}
       </div>
+
       <!-- Input type submit bind jquery pop up message  -->
       <input id="pop_up" type="submit" value="Submit" class="form-control btn btn-primary">
+
       {% if form.card_number.errors %}
       <div class="form-control">
       {{ form.card_number.errors }}
+      </div>
+      {% endif %}
+      {% if form.cardholders_name.errors %}
+      <div class="form-control">
+      {{ form.cardholders_name.errors }}
+      </div>
+      {% endif %}
+      {% if form.card_balance.errors %}
+      <div class="form-control">
+      {{ form.card_balance.errors }}
       </div>
       {% endif %}
     </form>
