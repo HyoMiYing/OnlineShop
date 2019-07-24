@@ -19,7 +19,7 @@ def payment(request):
         if form.is_valid():
 
             card = form.cleaned_data['card']
-            appropriate_card_in_the_database = Card.objects.get(cardholders_name=f"{card}")
+            appropriate_card_in_the_database = Card.objects.get(cardholders_name=(f"{card}"))
             withdraw_amount = form.cleaned_data['withdraw_amount']
 
             new_transaction_instance = Transaction(card=card, withdraw_amount=withdraw_amount)

@@ -28,4 +28,8 @@ Komentar po prvem pull requestu je bil tudi, naj dodam kodiranje v forms.py. Če
 nenavadnih znakov v obrazec. Glede na to, da se s tem prej še nikoli nisem srečal sem prevzel rešitev iz StackOveflowa rešitev,
 da je v HTML <form> dodan accept-charset="UTF-8". Je ta rešitev pravilna, in ali sem sploh prav razumel težavo?
 
-Do konca je spisan tudi functional_tests.py, ki deluje. Navodila za uporabo so napisana v datoteki.
+Do konca je spisan tudi functional_tests.py, ki deluje.
+Potrebuje pa geckodriver. Če še ni nameščen v vašem sistemu, ga najdete na https://github.com/mozilla/geckodriver/releases.
+Potreben je download in extract. Nato ga je treba dati na system path. 
+Na Mac/Linux je to /usr/local/bin, v Windowsih pa je lahko geckodriver kar v isti mapi kot je manage.py.
+ Dodatne informacije so napisane v datoteki.
